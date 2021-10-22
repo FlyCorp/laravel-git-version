@@ -1,5 +1,5 @@
 <?php
-namespace Tremby\LaravelGitVersion;
+namespace FlyCorp\LaravelGitVersion;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\RuntimeException;

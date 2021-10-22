@@ -1,1 +1,1 @@
-<!-- {{ \Tremby\LaravelGitVersion\GitVersionHelper::getNameAndVersion() }} -->
+<!-- {{ \FlyCorp\LaravelGitVersion\GitVersionHelper::getNameAndVersion() }} -->

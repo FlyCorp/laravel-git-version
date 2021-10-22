@@ -16,7 +16,7 @@ Installation
 
 Require it in your Laravel/Lumen project:
 
-    composer require tremby/laravel-git-version
+    composer require flyCorp/laravel-git-version
 
 ### Optional packages
 
@@ -32,11 +32,11 @@ Use
 
 You can get the git version string with
 
-    \Tremby\LaravelGitVersion\GitVersionHelper::getVersion()
+    \FlyCorp\LaravelGitVersion\GitVersionHelper::getVersion()
 
 Or you can get your app name and version number such as `my-project/1.0` with
 
-    \Tremby\LaravelGitVersion\GitVersionHelper::getNameAndVersion()
+    \FlyCorp\LaravelGitVersion\GitVersionHelper::getNameAndVersion()
 
 The app's name is taken from `Config::get('app.name', 'app')`, so you can
 configure it in your `config/app.php` file or leave it as the default of `app`.
@@ -72,7 +72,7 @@ file:
 
     'providers' => [
         ...
-        Tremby\LaravelGitVersion\GitVersionServiceProvider::class,
+        FlyCorp\LaravelGitVersion\GitVersionServiceProvider::class,
     ],
 
 Then the view is available:

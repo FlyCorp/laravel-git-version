@@ -1,5 +1,5 @@
 <?php
-namespace Tremby\LaravelGitVersion;
+namespace FlyCorp\LaravelGitVersion;
 
 use Illuminate\Support\ServiceProvider;
 
