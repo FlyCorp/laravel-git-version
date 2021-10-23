@@ -113,7 +113,9 @@ class GitVersionHelper
         return trim(self::cmdToArray($output));
     }
 
-    private function cmdToArray($a){
+    private function cmdToArray($value){
+
+        $a = explode("commit",$value);
 
         foreach ($a as $key => $b) {
             if($key > 0){
