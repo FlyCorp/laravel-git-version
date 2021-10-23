@@ -72,7 +72,7 @@ class GitVersionHelper
 
         return trim($output);
     }
-    public  function geLog()
+    public static function geLog()
     {
         $path = base_path();
 
@@ -110,12 +110,8 @@ class GitVersionHelper
         if ($fail) {
             throw new Exception\CouldNotGetVersionException;
         }
-        return trim(self::cmdToArray($output));
-    }
 
-    private function cmdToArray($value){
-
-        $a = explode("commit",$value);
+        $a = explode("commit",trim($output));
 
         foreach ($a as $key => $b) {
             if($key > 0){
@@ -133,7 +129,7 @@ class GitVersionHelper
 
         return $filter;
 
-    }
+   }
 
     /**
      * Get a string identifying the app and version
