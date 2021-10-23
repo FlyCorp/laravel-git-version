@@ -36,7 +36,48 @@ class GitVersionHelper
         $path = base_path();
 
         // Get version string from git
-        $command = 'git log -1';
+        $command = 'git describe --always --tags --dirty';
+        $fail = false;
+        if (class_exists('\Symfony\Component\Process\Process')) {
+            try {
+                if (method_exists(Process::class, 'fromShellCommandline')) {
+                    $process = Process::fromShellCommandline($command, $path);
+                } else {
+                    $process = new Process($command, $path);
+                }
+            
+                $process->mustRun();
+                $output = $process->getOutput();
+            } catch (RuntimeException $e) {
+                $fail = true;
+            }
+        } else {
+            // Remember current directory
+            $dir = getcwd();
+
+            // Change to base directory
+            chdir($path);
+
+            $output = shell_exec($command);
+
+            // Change back
+            chdir($dir);
+
+            $fail = $output === null;
+        }
+
+        if ($fail) {
+            throw new Exception\CouldNotGetVersionException;
+        }
+
+        return trim($output);
+    }
+    public static function geLog()
+    {
+        $path = base_path();
+
+        // Get version string from git
+        $command = 'git log';
         $fail = false;
         if (class_exists('\Symfony\Component\Process\Process')) {
             try {
