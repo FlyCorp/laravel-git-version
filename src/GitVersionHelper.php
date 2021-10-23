@@ -110,8 +110,7 @@ class GitVersionHelper
         if ($fail) {
             throw new Exception\CouldNotGetVersionException;
         }
-        dd(99);
-        return trim($output);
+        return ($output);
     }
 
     /**
