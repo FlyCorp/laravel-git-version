@@ -110,7 +110,27 @@ class GitVersionHelper
         if ($fail) {
             throw new Exception\CouldNotGetVersionException;
         }
-        return ($output);
+        return trim(self::cmdToArray($output));
+    }
+
+    private function cmdToArray($a){
+
+        foreach ($a as $key => $b) {
+            if($key > 0){
+                $currentValue = (explode("\n",$b));
+                foreach ($currentValue as $key2 => $value) {
+                    if($value != ""){
+                        if($key2 == 0){
+                            $value = "Commit: ".trim($value);
+                        }
+                        $filter[$key][$key2] =  trim($value);
+                    }
+                }
+            }
+        }
+
+        return $filter;
+
     }
 
     /**
