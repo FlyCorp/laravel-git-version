@@ -38,6 +38,10 @@ Or you can get your app name and version number such as `my-project/1.0` with
 
     \FlyCorp\LaravelGitVersion\GitVersionHelper::getNameAndVersion()
 
+Or you can get your app all commits with
+
+    \FlyCorp\LaravelGitVersion\GitVersionHelper::geLog()
+
 The app's name is taken from `Config::get('app.name', 'app')`, so you can
 configure it in your `config/app.php` file or leave it as the default of `app`.
 
