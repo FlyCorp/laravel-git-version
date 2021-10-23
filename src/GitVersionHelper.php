@@ -72,7 +72,7 @@ class GitVersionHelper
 
         return trim($output);
     }
-    public static function geLog()
+    public  function geLog()
     {
         $path = base_path();
 
