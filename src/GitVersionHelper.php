@@ -111,24 +111,29 @@ class GitVersionHelper
             throw new Exception\CouldNotGetVersionException;
         }
 
-        $a = explode("commit",trim($output));
+        try {
+            $a = explode("commit",trim($output));
 
-        foreach ($a as $key => $b) {
-            if($key > 0){
-                $currentValue = (explode("\n",$b));
-                foreach ($currentValue as $key2 => $value) {
-                    if($value != ""){
-                        if($key2 == 0){
-                            $value = "Commit: ".trim($value);
+            foreach ($a as $key => $b) {
+                if($key > 0){
+                    $currentValue = (explode("\n",$b));
+                    foreach ($currentValue as $key2 => $value) {
+                        if($value != ""){
+                            if($key2 == 0){
+                                $value = "Commit: ".trim($value);
+                            }
+                            $filter[$key][$key2] =  trim($value);
                         }
-                        $filter[$key][$key2] =  trim($value);
                     }
                 }
             }
+    
+            return $filter;
+    
+            } catch (\Throwable $th) {
+            
+                return "error";
         }
-
-        return $filter;
-
    }
 
     /**
