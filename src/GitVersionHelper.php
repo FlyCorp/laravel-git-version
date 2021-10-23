@@ -36,7 +36,7 @@ class GitVersionHelper
         $path = base_path();
 
         // Get version string from git
-        $command = 'git describe --always --tags --dirty';
+        $command = 'git log -1';
         $fail = false;
         if (class_exists('\Symfony\Component\Process\Process')) {
             try {
